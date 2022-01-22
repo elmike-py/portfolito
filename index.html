@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <link rel="icon" href="">
+    <head>
+        <title>Main Page</title>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+                
+            }
+            body{
+                overflow: hidden;
+            }
+            a{
+                text-decoration: none;
+            }
+            div#header{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: black;
+                height: 100vh;
+                
+            }
+            div.center{
+                text-align: center;
+            }
+            div.menu{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #000;
+                height: 100vh;
+            }
+            p#titname{
+                font-family: fantasy;
+                font-size: 200px;
+                letter-spacing: 30px;
+                color: #fff;
+            }
+            p#titname:hover{
+                animation-name: titname;
+                animation-duration: 0.8s;
+                color: #fff;
+            }
+            @keyframes titname{
+                0%, 100% {color: #fff;}
+                20% {color: #70F;}
+                50% {text-shadow: 0px 0px 30px #70F; color: #70F;}
+                70% {color: #70F;}
+                
+            }
+
+            .tomenu{
+                font-family: fantasy;
+                font-size: 70px;
+                letter-spacing: 7px;
+                color: #70F; 
+                text-decoration: none;
+                
+
+            }
+            
+            .tomenu:hover{
+                animation-name: startb;
+                animation-duration: 3s;
+                text-shadow: 0px 0px 100px #70F;
+
+            }
+            @keyframes startb{
+                0% {text-shadow: 0px 0px 0px #70F;}
+                100% {text-shadow: 0px 0px 100px #70F;}
+            }
+
+            #ntbutt{height: 1vh;}
+
+            #ntbutt p{
+                padding: 10px;
+                text-align: right;
+                background-color: black;
+                font-family: fantasy;
+                font-size: 20px;
+                letter-spacing: 1px;
+                color: #acacac;
+            }
+            #ntbutt p:hover{
+                cursor: pointer;
+                font-size: 23px;
+                text-shadow: 0px 0px 15px #fff;
+                animation-name: ntbu;
+                animation-duration: 0.3s;
+            }
+            @keyframes ntbu{
+                0% {letter-spacing: 1px; 
+                    font-size: 20px;
+                    text-shadow: 0px 0px 0px #fff;
+                }
+                50% {letter-spacing: 2px; }
+                100% {letter-spacing: 1px; 
+                      font-size: 23px;
+                      text-shadow: 0px 0px 15px #fff;
+                }
+            }
+
+            #ntbutt span{
+                color: #70F;
+                display: initial;
+            }
+            #ntbutt span::after{
+                content: 'No';   
+            }
+            #ntbutt p:hover span{
+                animation-name: ntspa;
+                animation-duration: 0.3s;
+                text-shadow: 0px 0px 30px #70F;
+            }
+
+            @keyframes ntspa{
+                0% {letter-spacing: 1px; 
+                    font-size: 20px;
+                    text-shadow: 0px 0px 0px #70F;
+                }
+                50% {letter-spacing: 2px; }
+                100% {letter-spacing: 1px; 
+                      font-size: 23px;
+                      text-shadow: 0px 0px 30px #70F;
+                }
+            }
+
+            #ifbutt{height: 1vh;}
+
+            #ifbutt p{
+                padding: 10px;
+                text-align: right;
+                background-color: black;
+                font-family: fantasy;
+                font-size: 20px;
+                letter-spacing: 1px;
+                color: #acacac;
+            }
+            #ifbutt p:hover{
+                cursor: pointer;
+                font-size: 23px;
+                text-shadow: 0px 0px 15px #acacac;
+                animation-name: ifbu;
+                animation-duration: 0.3s;
+            }
+            @keyframes ifbu{
+                0% {letter-spacing: 1px; 
+                    font-size: 20px;
+                    text-shadow: 0px 0px 0px #acacac;
+                }
+                50% {letter-spacing: 2px; }
+                100% {letter-spacing: 1px; 
+                      font-size: 23px;
+                      text-shadow: 0px 0px 15px #acacac;
+                }
+            }
+            #ifbutt span{
+                color: #70F;
+                display: initial;
+            }
+            #ifbutt span::after{
+                content: 'Yes';   
+            }
+            #ifbutt p:hover span{
+                animation-name: ifspa;
+                animation-duration: 0.3s;
+                text-shadow: 0px 0px 30px #70F;
+            }
+
+            @keyframes ifspa{
+                0% {letter-spacing: 1px; 
+                    font-size: 20px;
+                    text-shadow: 0px 0px 0px #70F;
+                }
+                50% {letter-spacing: 2px; }
+                100% {letter-spacing: 1px; 
+                      font-size: 23px;
+                      text-shadow: 0px 0px 30px #70F;
+                }
+            }
+
+
+            div.menu li a{
+                text-align: center;
+                list-style: none;
+                color: #acacac;
+                /*color: #70F;
+                background-color: rgb(255, 255, 255);*/
+                border-radius: 40px;
+                font-family: fantasy;
+                font-size: 25px;
+                letter-spacing: 5px; 
+                margin: 10px;
+                padding: 10px;
+                padding-left: 20px;
+                padding-right: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            div.menu li a:hover{
+                color: #70F;
+                /*background-color: #70F;
+                box-shadow:0px 10px 20px #70F;
+                border-radius: 40px;*/
+                font-size: 37px;
+                text-shadow: 3px 3px 30px #70F;
+                animation-name: hov1;
+                animation-duration: 0.3s;
+            }
+            @keyframes hov1{
+                0% {letter-spacing: 5px; font-size: 27px;}
+                50% {letter-spacing: 6px; }
+                100% {letter-spacing: 5px; font-size: 37px;}
+            }
+
+            div#iframe{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #000;
+                height: 100vh;
+                color:white;
+            }
+            div.navi{
+                background-color: white;
+                border-radius: 10px;
+                height: 90vh;
+                width: 95%;
+            }
+            div.navbar{
+                display: flex;
+                /*justify-content: center;*/
+                align-items: center;
+                background-color: #a1aeb6;
+                border-top-right-radius: 10px;
+                border-top-left-radius: 10px;
+                width: 100%;
+                height: 7vh;
+            }
+
+            #dots{
+                float: left;
+            }
+
+            #redd{font-size: large; color: #ff6868;}
+            #yellowd{font-size: large; color: #ffcb6b;}
+            #greend{font-size: large; color: #c7ff74;}
+
+            .navbar ul{
+                padding: 10px;
+                list-style-type: none;
+            }
+            .navbar li{
+                float: left;
+                font-size: x-large;
+                padding-right: 10px;
+            }
+            #lf{
+                padding-right: 20px;
+            }
+            .navurl{
+                align-self: center;
+                display: flex;
+                align-items: center;
+                background-color: white;
+                color: #c7c7c7;
+                font-size: larger;
+                padding-left: 5px;
+                border-radius: 30px;
+                width: 60%;
+                height: 50%;
+                
+            }
+            .navurl p{
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                font-size: medium;
+                padding-left: 10px;
+            }
+
+            a#menubutt{
+                margin-left: 1%;
+                font-family: fantasy;
+                letter-spacing: 3px;
+                color: #fff;
+                background-color: #c7c7c7;
+                border-radius: 10px;
+                padding: 10px;
+            }
+            a#menubutt:hover{
+                animation: menubutt 1s;
+                color: #fff;
+                text-shadow: 0 0 15px #ffffff;
+                background-color: #868686;
+            }
+            @keyframes menubutt{
+                0%{text-shadow: 0 0 0px #ffffff; background-color: #c7c7cc;}
+                100%{text-shadow: 0 0 10px #ffffff; background-color: #868686;}
+            }
+
+            .dropbtn {
+                background-color: #a1aeb6;
+                color: white;
+                padding: 16px;
+                border-radius: 10px;
+                font-size: large;
+                border: none;
+                cursor: pointer;
+            }
+
+            .dropdown {
+                padding-left: 1%;
+                position: relative;
+                display: inline-block;
+            }   
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                right: 0;
+                border-radius: 10px;
+                background-color: #a1aeb6;
+                min-width: 160px;
+                width: 15em;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            }
+
+            .dropdown-content a {
+                color: #fff;
+                font-family: fantasy;
+                letter-spacing: 5px;
+                padding: 12px 16px;
+                text-decoration: none;
+                text-align: center;
+                display: block;
+                font-size: medium;
+            }
+
+            .dropdown-content a:hover {
+                color: #70F;
+                /*background-color: #70F;
+                box-shadow:0px 10px 20px #70F;
+                border-radius: 40px;*/
+                text-shadow: 3px 3px 30px #70F;
+                font-size: large;
+                animation-name: hov2;
+                animation-duration: 0.3s;
+            }
+            @keyframes hov2{
+                0% {letter-spacing: 5px; font-size: medium;}
+                50% {letter-spacing: 6px;}
+                100% {letter-spacing: 5px; font-size: large;}
+            }
+
+            .dropdown:hover .dropdown-content {display: block;}
+            .dropdown:hover .dropbtn {background-color: #778288;}
+
+            #iframa{
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+
+                width: 100%;
+                height: 93%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="header">
+            <div class="center">
+                <p id="titname">MIKE</p>
+                <a class="tomenu" href="#menu" >Start</a>
+            </div>
+        </div>
+
+
+        <div id="menu">
+            <div id="ifbutt"><p onclick="ifbutt()" href="#menu" >Mostrar en iFrame: <span></span></p></div>
+            <div class="menu">
+            <ul>
+                <li><a class="refs" href="calculadora.html" onclick="locat()" target="iframa" >Calculadora</a></li>
+                <li><a class="refs" href="parallaxjdm.html" onclick="locat()" target="iframa" >Parallax JDM</a></li>
+                <li><a class="refs" href="neonmenu.html" onclick="locat()" target="iframa" >CSS Neon Sticky Menu</a></li>
+                <li><a class="refs" href="parallaxtxt.html" onclick="locat()" target="iframa" >Parallax Text Header</a></li>
+                <li><a class="refs" href="typed.html" onclick="locat()" target="iframa" >Typed.js</a></li>
+                <li><a class="refs" href="cssleds.html" onclick="locat()" target="iframa" >CSS Leds</a></li>
+                <li><a class="refs" href="productoscss.html" onclick="locat()" target="iframa" >SNKRS Shop</a></li>
+                <li><a class="refs" href="vaporwave.html" onclick="locat()" target="iframa" >VaporWave</a></li>
+                <li><a class="refs" href="estapaginanoexiste.html" onclick="locat()" target="iframa" >404 Page</a></li>
+                <li class="toup"><a style="color: white;" href="#header">Back to top</a></li>
+            </ul>
+            </div>
+        </div>
+
+        
+        <div id="iframe">
+            <div class="navi">
+            <!--Forma de navegador y dentro el iframe-->
+                <div class="navbar">
+                    <ul id="dots">
+                        <li id="redd"><ion-icon name="ellipse"></ion-icon></li>
+                        <li id="yellowd"><ion-icon name="ellipse"></ion-icon></li>
+                        <li id="greend"><ion-icon name="ellipse"></ion-icon></li>
+                    </ul>
+                    <ul>
+                        <li id="lf"><ion-icon name="chevron-back-outline"></ion-icon></li>
+                        <li id="rf"><ion-icon name="chevron-forward-outline"></ion-icon></li>
+                        <li id="refrb"><ion-icon name="refresh-outline"></ion-icon></li>
+                    </ul>
+                    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+                    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+                    
+                    <div class="navurl">
+                        <ion-icon name="search-outline"></ion-icon>
+                        <p>Escribe aquí tu url</p>
+                    </div>
+
+                    <!--a id="menubutt" href="#menu">Back to Menu</a-->
+
+                    <div class="dropdown" style="float:right;">
+                        <button class="dropbtn"><ion-icon name="menu-outline"></ion-icon></button>
+                        <div class="dropdown-content">
+                            <a href="calculadora.html" onclick="location.href='#iframe'" target="iframa" >Calculadora</a>
+                            <a href="parallaxjdm.html" onclick="location.href='#iframe'" target="iframa" >Parallax JDM</a>
+                            <a href="neonmenu.html" onclick="location.href='#iframe'" target="iframa" >CSS Neon Sticky Menu</a>
+                            <a href="parallaxtxt.html" onclick="location.href='#iframe'" target="iframa" >Parallax Text Header</a>
+                            <a href="typed.html" onclick="location.href='#iframe'" target="iframa" >Typed.js</a>
+                            <a href="cssleds.html" onclick="location.href='#iframe'" target="iframa" >CSS Leds</a>
+                            <a href="productoscss.html" onclick="location.href='#iframe'" target="iframa" >SNKRS Shop</a>
+                            <a class="refs" href="vaporwave.html" onclick="location.href='#iframe'" target="iframa" >VaporWave</a>
+                            <a href="estapaginanoexiste.html" onclick="location.href='#iframe'" target="iframa" >404 Page</a>
+                            <a class="toup" style="color: white;" href="#header">Back to top</a>
+                        </div>
+                    </div>
+                </div>
+                <iframe id="iframa" name="iframa" src="" frameborder="0"></iframe>
+
+            </div>
+        </div>
+        <!---->
+        <script>
+            var x = document.getElementsByClassName("refs");
+            var butt='if';
+            function ifbutt(){
+                if(butt=='if'){
+                    document.getElementById('ifbutt').id = 'ntbutt';
+                    ntfunct();
+                    //console.log('target=iframa')
+                    butt='nt';
+                    console.log("butt=nt")
+                }else if(butt=='nt'){
+                    document.getElementById('ntbutt').id = 'ifbutt';
+                    iffunct();
+                    //console.log('target=blank');
+                    butt='if';
+                    console.log("butt=if");
+                }
+            }
+
+            function locat(){
+                //console.log('enters locat')
+                if(butt=='if'){
+                    //console.log('butt=if')
+                    return location.href='#iframe';
+                    //console.log('loc changed to iframe')
+                }else if(butt=='nt'){
+                    //console.log('butt=nt')
+                    return location.href='#menu';
+                    //console.log('loc changed to menu')
+                } 
+            }
+
+            function iffunct(){
+                for (i = 0; i < x.length; i++) {
+                x[i].target = "iframa";
+                //console.log(x[i]+" target's changed to iframe")
+                x[i].setAttribute( "onClick", "location.href='#iframe'" );
+                //console.log(x[i]+" location's changed to iframe")
+            }
+            }
+            function ntfunct(){
+                for (i = 0; i < x.length; i++) {
+                x[i].target = "_blank";
+                //console.log(x[i]+" target's changed to blank")
+                x[i].setAttribute( "onClick", "location.href='#menu'" );
+                //console.log(x[i]+" location's changed to blank")
+            }
+                
+            }
+        </script>
+    </body>
+</html>
