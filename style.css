@@ -238,8 +238,11 @@ footer h1{
     nav{
         justify-content: space-evenly;
     }
-    nav #enlaces, nav #enlaces a{
+    nav #enlaces{
         margin: 0;
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
     }
     /*---Página de inicio---*/
     #inicio{
