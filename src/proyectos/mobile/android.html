@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <link rel="icon" href="">
+    <head>
+        <title></title>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Norican&family=Roboto:wght@300;400&display=swap');
+            *{padding: 0;margin: 0;}
+            body{
+                background-image: url(img/androidbkg.jpeg);
+                background-size: 100% 100vh;
+                overflow: hidden;
+            }
+            .notif{
+                position: absolute;
+                width: 95%;
+                height: 4vh;
+                line-height: 4vh;
+                background-color: #2b2b2b67;
+                color: #fff;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-size: 0.7em;
+                padding-left: 0.5em;
+                padding-right: 1em;
+                transition: 0.7s;
+                z-index: 5000;
+            }
+            .notif:hover{
+                cursor: pointer;
+            }
+            #big_notif{visibility: hidden;}
+            .bignotif{
+                height: 100vh;
+                background-color: #2b2b2bdc;
+            }
+            .bignotif #clock, .bignotif #notif_data{
+                padding: 0.5em;
+                font-size: x-large;
+            }
+            .bignotif #big_notif{
+                margin-top: 8em;
+                visibility: visible;
+            }
+            .bignotif #big_notif hr{
+                width: 70%;
+                margin: auto;
+                border-color: #ffffff69;
+            }
+            .bignotif #big_notif p{
+                margin-top: 5%;
+                width: 100%;
+                text-align: center;
+                color: #ffffff69;
+            }
+            #clock{
+                float: left;
+                transition: 0.7s;
+            }
+            #notif_data{
+                font-size: large;
+                float: right;
+                transition: 0.7s;
+            }
+
+            #navbar{
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 4vh;
+                background-color: #2b2b2b67;
+                color: #fff;
+                z-index: 5000;
+                text-align: center;
+            }
+            #navbar ion-icon{
+                margin: 1em;
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+            #navbar ion-icon:hover{
+                cursor: pointer;
+            }
+            .navbig{
+                background-color: green;
+            }
+
+            #screen{
+                width: 100%;
+                height: 100vh;
+                /*background-image: linear-gradient(20deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%);
+                */z-index: 1;
+            }
+            #home #navigator{
+                width: 100%;
+                padding-top:40%;
+                text-align: center;
+            }
+            #home #navigator input{
+                max-width: 65%;
+                height: 2em;
+                background-color: #ffffff3f;
+                color: white;
+                border: none;
+                border-radius: 10px;
+                padding-left: 2.5em;
+                transform: translate(-0.7em,0);
+            }
+            #home #navigator input:focus{
+                outline: none;
+            }
+            #home #navigator ion-icon{
+                color: white;
+                transform: translate(1.1em,0.1em);
+            }
+            #home #menu{
+                position: absolute;
+                bottom: 4vh;
+            }
+            #home #menu>hr{
+                margin: auto;
+                text-align: center;
+                width: 50%;
+                margin-bottom: 0.6em;
+                border-color: #ffffffb4;
+            }
+            #home #apps{
+                width: 100%;
+                height: auto;
+                font-size: xx-large;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                backdrop-filter: blur( 1px );
+                -webkit-backdrop-filter: blur( 1px );   
+            }
+            #home .app{
+                margin: 0.4em;
+                margin-top: 0.2em;
+                padding: 0.2em;
+                background-color: #ffffff41;
+                color: #fff;
+                border-radius: 5px;
+                transition: 0.3s;
+            }
+            #home .app:hover{
+                background-color: #ffffff81;
+                color: #000;
+                cursor: pointer;
+            }
+
+            #whatsapp{
+                position: absolute;
+                top: 0;
+                font-family: 'Roboto', sans-serif;
+                width: 100%;
+                height: 100vh;
+                background-color: #12191a;
+                overflow-y: hidden;
+            }
+            #whatsapp #w_header{
+                color: #858686;
+                width: 100%;
+                height: 17vh;
+                background-color: #1f2424;
+            }
+            #whatsapp #w_header p#title{
+                margin-top: 0.5em;
+                padding: 1em;
+                font-size: small;
+                float: left;
+            }
+            #whatsapp #w_header ion-icon{
+                margin-top: 0.5em;
+                padding: 1em;
+                padding-left: 0em;
+                float: right;
+            }
+
+            #whatsapp #w_header #w_dmenu{
+                margin: 0;
+                width: 100%;
+                height: 7vh;
+                position: absolute;
+                top: 10vh;
+                left: 0;
+            }
+            #whatsapp #w_header #w_dmenu ion-icon{
+                float: left;
+                padding: 0.4em;
+            }
+
+            #whatsapp .w_dmenu{
+                padding: 0.7em;
+                padding-bottom: 0.2em;
+                margin-top: 0.8em;
+                display: inline-block;
+                text-transform: uppercase;
+                font-size: x-small;
+                cursor: pointer;
+            }
+            #whatsapp .menu_selected{
+                color: #0e7259;
+                border-bottom: 3px solid #0e7259;
+            }
+            #whatsapp .w_screen{
+                position: absolute;
+                top: 17vh;
+                width: 100%;
+                height: 83vh;
+
+            }
+            #whatsapp #w_chats{
+                overflow-y: scroll;
+            }
+            #whatsapp .w_scroll::-webkit-scrollbar {
+              width: 3.5px;               /* width of the entire scrollbar */
+          
+            }
+            #whatsapp .w_scroll::-webkit-scrollbar-track {
+              background: #2e3435 ;        /* color of the tracking area */
+              border-radius: 30px;
+            }
+            #whatsapp .w_scroll::-webkit-scrollbar-thumb {
+              background-color: #858686;    /* color of the scroll thumb */
+              border-radius: 30px;       /* roundness of the scroll thumb */
+              border: none  /* creates padding around scroll thumb */
+            }
+            #whatsapp .w_scroll::-webkit-scrollbar-thumb:hover {
+              background-color: #266d56;
+            }
+            #whatsapp .chat {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            #whatsapp .chat img{
+                width: 2em;
+                height: auto;
+                border-radius: 50%;
+                padding: 0.5em;
+            }
+            /*#whatsapp .chat p{
+                display: inline-block;
+            }*/
+            #whatsapp #chat_info{
+                display: inline-block;
+                width: calc(90% - 2em);
+            }
+            #whatsapp .chat p#chat_title{
+                color: #fff;
+                line-height: 1;
+            }
+            #whatsapp .chat p#chat_message{
+                font-size: 0.7em;
+                line-height: 1.3;
+            }
+            #whatsapp .chat p#chat_fecha{
+                float: right;
+                padding: 0.2em;
+                font-size: x-small;
+            }
+
+
+
+
+
+            #whatsapp #tu_estado img{
+                width: 2.5em;
+                height: auto;
+                border-radius: 50%;
+                padding: 0.5em;
+            }
+            #whatsapp #tu_estado img+ion-icon{
+                position: absolute;
+                top: 0.3em;
+                left: 1.7em;
+                font-size: larger;
+                color: #0e7259;
+                z-index: 2;
+            }
+
+            #whatsapp #tu_estado img+ion-icon::before{
+                position: absolute;
+                top: 2.1em;
+                left: 0.5em;
+                content: '    ';
+                font-size: x-small;
+                background-color: #ffffff;
+                border-radius: 50%;
+                z-index: -1;
+            }
+            #whatsapp #tu_estado img+ion-icon::before{
+                position: absolute;
+                top: 1.2em;
+                left: 0.1em;
+                content: '     ';
+                font-size: medium;
+                background-color: #12191a;
+                border-radius: 50%;
+                z-index: -1;
+            }
+            #whatsapp #tu_estado #estados_info{
+                position: absolute;
+                top: 0.8em;
+                display: inline-block;
+                width: calc(90% - 2.5em);
+            }
+
+            #whatsapp #tu_estado #estados_info #tuestado_title{
+                font-size: 0.9em;
+                color: white;
+            }
+            #whatsapp #tu_estado #estados_info #tuestado_message{
+                font-size: 0.7em;
+            }
+
+
+
+
+            #whastapp #w_llamadas{
+                overflow-y: scroll;
+            }
+
+            #whatsapp .w_call img{
+                width: 2em;
+                height: auto;
+                padding: 0.5em;
+                border-radius: 50%;
+            }
+            #whatsapp .w_call div{
+                display: inline-block;
+                width: calc(90% - 5em);
+            }
+            #whatsapp .w_call div #wcall_title{
+                color: #fff;
+            }
+            #whatsapp .w_call div span{
+                color: #ff0000bd;
+                float: left;
+                font-size: smaller;
+                margin: 0;
+                margin-top: 0.2em;
+            }
+            #whatsapp .w_call div #wcall_time {
+                font-size: smaller;
+                display: inline-block;
+            }
+            #whatsapp .w_call span{
+                margin: 0.5em;
+                margin-top: 0.8em;
+                float: right;
+                font-size: medium;
+            }
+
+
+
+            #insta{
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: black;
+                color: white;
+            }
+            #insta #i_dmenu{
+                position: absolute;
+                bottom: 0;
+                padding-bottom: 1.1em;
+                width: 100%;
+                height: 2em;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                background-color: black;
+                z-index: 200;
+
+            }
+            #insta #i_dmenu img{
+                width: 1.18em;
+                height: 1.18em;
+                border-radius: 50%;
+
+            }
+            #insta #i_dmenu img:hover, #insta #i_dmenu span:hover{
+                cursor: pointer;
+            }
+
+            #insta #i_header{
+                margin-top: 1em;
+                width: 100%;
+                height: 6.2vh;
+            }
+            #insta #i_logo{
+                float: left;
+                font-size: larger;
+                font-family: 'Norican', cursive;
+            }
+            #insta #i_header span{
+                margin: 0.4em;
+                font-size: medium;
+                float: right;
+                line-height: 1em;
+            }
+            #insta #i_stories{
+                width: 100%;
+                height: 4.5em;
+                overflow-x:scroll;
+                overflow-y:hidden;
+                white-space: nowrap;
+            }
+            #insta #i_stories::-webkit-scrollbar,
+             #insta #i_publis::-webkit-scrollbar,
+              #insta #i_dgrid::-webkit-scrollbar,
+              #insta #i_reels::-webkit-scrollbar,
+              #insta #shop_slider::-webkit-scrollbar,
+              #insta #shop_items::-webkit-scrollbar {
+              height: 0.2em;               /* width of the entire scrollbar */
+              width: 0.3em;
+          
+            }
+            #insta #i_stories::-webkit-scrollbar-track,
+             #insta #i_publis::-webkit-scrollbar-track,
+             #insta #i_dgrid::-webkit-scrollbar-track,
+             #insta #i_reels::-webkit-scrollbar-track,
+             #insta #shop_slider::-webkit-scrollbar-track,
+             #insta #shop_items::-webkit-scrollbar-track {
+              background: #000000 ;        /* color of the tracking area */
+            }
+            #insta #i_stories::-webkit-scrollbar-thumb,
+             #insta #i_publis::-webkit-scrollbar-thumb,
+             #insta #i_dgrid::-webkit-scrollbar-thumb,
+             #insta #shop_slider::-webkit-scrollbar-thumb,
+             #insta #shop_items::-webkit-scrollbar-thumb{
+              background-color: #292929;    /* color of the scroll thumb */
+                     /* roundness of the scroll thumb */
+              border: none  /* creates padding around scroll thumb */
+            }
+             #insta #i_reels::-webkit-scrollbar-thumb{
+                background-color: #8f8f8f
+             }
+            #insta #i_stories::-webkit-scrollbar-thumb:hover,
+             #insta #i_publis::-webkit-scrollbar-thumb:hover,
+             #insta #i_dgrid::-webkit-scrollbar-thumb:hover,
+             #insta #i_reels::-webkit-scrollbar-thumb:hover,
+             #insta #shop_slider::-webkit-scrollbar-thumb:hover,
+             #insta #shop_items::-webkit-scrollbar-thumb:hover {
+              background-color: #b1b1b1;
+            }
+
+            #insta #i_stories .i_story, #insta #i_stories .my_story{
+                display: inline-block;
+                height: 100%;
+                width: 3.5em;
+            }
+            #insta #i_stories .i_story img{
+                margin: 0.5em;
+                margin-bottom: 0;
+                padding: 0.5px;
+                width: 2.5em;
+                height: auto;
+                border-radius: 50%;
+                background: 
+                linear-gradient(248deg, #9d22c3 5%, #c05a67 50%, #c36060 66%, #fdbb2d 100%) padding-box,
+                linear-gradient(248deg, #9d22c3 5%, #c05a67 50%, #c36060 66%, #fdbb2d 100%) border-box;
+                border-radius: 50em;
+                border: 2px solid transparent;
+
+            }
+            #insta #i_stories .my_story img{
+                margin: 0.5em;
+                margin-bottom: 0;
+                padding: 0.5px;
+                width: 2.5em;
+                height: auto;
+                border-radius: 50%;
+                border: 2px solid #ffffff6b;
+
+            }
+            
+            #insta #i_stories p{
+                width: 100%;
+                text-align: center;
+                font-size: xx-small;
+                font-family: 'Roboto', sans-serif;
+                font-weight: 300;
+                color: #ffffffa8;
+            }
+
+
+            #insta #i_publis{
+                height: 63vh;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                font-family: 'Roboto', sans-serif;
+            }
+            #insta .i_publi .publi_title{
+                max-height: 2.5em;
+                display: flex;
+                align-items: center;
+            }
+
+            #insta .i_publi .publi_title img{
+                margin: 0.5em;
+                padding: 0.5px;
+                width: 1.5em;
+                height: auto;
+                border-radius: 50%;
+
+            }
+            #insta .i_publi .publi_title p{
+                display: inline-block;
+                font-size: x-small;
+                margin-right: 50%;
+                font-family: 'Roboto', sans-serif;
+            }
+            #insta .i_publi img{
+                width: 100%;
+                height: auto;
+            }
+
+            #insta .i_publi .desc_icons span{
+                font-size: medium;
+
+            }
+            #insta .i_publi .publi_desc{
+                margin-left: 0.3em;
+            }
+            #insta .i_publi .desc_icons :last-child{
+                float: right;
+
+            }
+            #insta .i_publi .publi_desc b, 
+            #insta .i_publi .publi_desc p{ 
+                font-size: small;
+            }
+            
+            #insta .i_publi .publi_desc p>span{
+                color: #4880f8;
+            }
+
+
+
+            #insta #i_descubrir {
+                position: absolute;
+                top: 1em; left: 0;
+                width: 100%;
+                height: calc(100% - 4.1em);
+            }
+            #insta #i_descubrir #i_dsearch{
+                margin-bottom: 0.5em;
+            }
+            #insta #i_descubrir #i_dsearch input{
+                margin-left: 0.3em;
+                margin-top: 0.5em;
+                background-color: #383838;
+                color: white;
+                border: none;
+                border-radius: 30px;
+                line-height: 2em;
+                padding-left: 2em;
+                width: 75%;
+            }
+            #insta #i_descubrir #i_dsearch input{
+                outline: none
+            }
+            #insta #i_descubrir #i_dsearch span{
+                font-size: medium;
+                
+            }
+            #insta #i_descubrir #i_dsearch :nth-child(1){
+                position: absolute;
+                top: 0.8em;
+                left: 0.7em;
+
+            }
+            #insta #i_descubrir #i_dgrid{
+                overflow-x: hidden;
+                overflow-y: scroll;
+                height: 100%;
+                display: grid;
+                grid-gap: 0.2em;
+                grid-template-columns: repeat(3, 1fr);
+
+            }
+            #insta #i_descubrir #i_dgrid img{
+                width: 100%;
+                height: auto;
+            }
+            #insta #i_descubrir #i_dgrid .doble{
+                width: 100%;
+                height: 200%;
+
+            }
+
+            #insta #i_reels{
+                position: absolute;
+                top: -4em;left: 0;
+                width: 100%;
+                height: 104vh;
+                background-color: #645555;
+                overflow-y: scroll;
+            }
+            #insta .reel{
+                background-image: url('img/reels.gif');
+                width: 100%;
+                height: 104vh;
+                font-family: 'Roboto', sans-serif;
+                display: grid; 
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; 
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    ". . . . . ."
+    ". . . . . ."
+    "reels_p reels_p . . . photo_i"
+    ". . . . . ."
+    ". . . . . ."
+    ". . . . . ."
+    ". . . . . ."
+    ". . . . . reels_icons"
+    ". . . . . reels_icons"
+    ". . . . . reels_icons"
+    "reels_info reels_info reels_info reels_info . reels_icons"
+    "reels_info reels_info reels_info reels_info . reels_icons"; 
+}
+
+            #insta .reel>p{
+                grid-area: reels_p;
+                margin: 0.5em;
+            }
+            
+            #insta .reel>span { grid-area: photo_i; margin: 0.2em; margin-left: 0.6em;}
+            #insta .reel .reels_icons { 
+                text-align: center;
+                margin-right: 0.5em;
+                grid-area: reels_icons;
+                padding-top: 1.3em;
+            }
+            #insta .reel .reels_icons img{
+                border: 2px solid white;
+                border-radius: 10px;
+            }
+            #insta .reel .reels_icons p{
+                font-size: xx-small;
+            }
+            #insta .reel .reels_info { 
+                margin-left: 0.4em;
+                font-size: small;
+                grid-area: reels_info; 
+            }
+            #insta .reel .reels_info >span { 
+                margin-left: 0.5em;
+                font-size: x-small;
+                padding: 0.1em;
+                border-radius: 5px;
+                border: 1px solid white;
+            }
+            
+            #insta .reel .reels_info marquee>span{
+                font-size: medium;
+            }
+            #insta .reel .reels_info marquee>p { 
+                display: inline-block;
+            }
+            #insta .reel img{
+                width: 2em;
+                height: 2em;
+                border-radius: 30px;
+            }
+            #insta #shop_header{
+                position: absolute;
+                font-family: 'Roboto', sans-serif;
+                text-align: center;
+                top: 1.1em;
+                width: 100%;
+            }
+            #insta #shop_header>p{
+                float: left;
+                padding: 0.2em;
+            }
+            #insta #shop_header :nth-child(2), #shop_header :nth-child(3){
+                float: right;
+                padding: 0.2em;
+            }
+            
+            #insta #shop_header :nth-child(5){
+                position: absolute;
+            }
+            #insta #shop_header input{
+                height: 2em;
+                width: calc(90%-2em);
+                background-color: #2b2b2b;
+                border: none;
+                border-radius: 5px;
+                color: white;
+                padding-left: 2em;
+                outline: none;
+            }
+            #insta #shop_header #shop_slider{
+                padding: 0.3em;
+                width: 100%;
+                height: 1.4em;
+                white-space: nowrap;
+                overflow-x: scroll;
+                overflow-y: hidden;
+            }
+            #insta #shop_header #shop_slider p{
+                text-align: none;
+                float: none;
+                display: inline;
+                padding: 1em;
+                padding-top: 0;
+                padding-bottom: 0;
+                color: white;
+                font-size: small;
+                border-radius: 7px;
+                border: 1px solid white;
+                
+            }
+            #insta #shop_items{
+                position: absolute;
+                top: 7em;
+                width: 100%;
+                height: 19em;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(6, 1fr);
+                grid-gap: 4px;
+                
+                white-space: nowrap;
+                overflow-y: scroll;
+                overflow-x: hidden;
+            }
+            #insta #shop_items img{
+                width: 100%;
+                height: 100%;
+            }
+
+
+            #insta #i_perfil{
+                font-family: 'Roboto', sans-serif;
+                position: absolute;
+                top: 1.1em;
+                width: 100%;
+            }
+            #insta #i_perfil #perfil_header, #perfil_info{
+                width: 100%;
+            }
+            #insta #i_perfil #perfil_header>span:nth-child(1){
+                font-size: medium;
+
+            }
+            #insta #i_perfil #perfil_header>p:nth-child(2){
+                line-height: 2em;
+                display: inline;
+            }
+            #insta #i_perfil #perfil_header>span:nth-child(3){
+                transform: translateY(0.3em);
+            }
+            #insta #i_perfil #perfil_header>span:nth-child(4), #perfil_header>span:nth-child(5){
+                float: right;
+            }
+
+            
+            #insta #i_perfil #perfil_info {
+                display: flex;
+                justify-content: space-between;
+            }
+            #insta #i_perfil #perfil_info img{
+                width: 3.4em;
+                height: auto;
+                border-radius: 50%;
+            }
+            #insta #i_perfil #perfil_info #stats{
+                display: inline-flex;
+                width: calc(100% - 3.5em);
+                justify-content: space-between;
+            }
+            #insta #i_perfil #perfil_info #stats .stat :nth-child(2){
+                font-size: x-small;
+                text-align: center;
+            }
+            
+            #insta #i_perfil #perfil_info #stats .stat{
+                text-align: center;
+                display: flex;
+                flex-flow: column;
+                justify-content: center;
+                align-items: center;
+
+            }
+            #insta #i_perfil #edit_perf{
+                width: 95%;
+                margin-top: 1em;
+                margin-left: 2.5%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: smaller;
+            }
+            #insta #i_perfil #edit_perf span:nth-child(1){
+                width: 90%;
+                padding: 4px;
+                border-radius: 6px;
+                text-align: center;
+                border: 2px solid #414141;
+            }
+            #insta #i_perfil #edit_perf span:nth-child(2){
+                border-radius: 6px;
+                text-align: center;
+                border: 2px solid #414141;
+                width: 10%;
+            }
+
+
+
+
+            #ultimo + div {
+                visibility:hidden;
+            }
+        </style>
+    </head>
+    <body onload="loaded()">
+        <div id="noti" class="notif" onclick="notif()">
+            <p id="clock">00:00</p>
+            <div id='notif_data'>
+                <ion-icon name="battery-half-outline"></ion-icon>
+            </div>
+            <div id="big_notif">
+                <hr>
+                <p id="no_notif">No notifications yet</p>
+            </div>
+        </div>
+        <div id="navbar">
+            <ion-icon name="reorder-three"></ion-icon>
+            <ion-icon onclick="changeScreen('home')" name="radio-button-on-outline"></ion-icon>
+            <ion-icon name="return-down-back"></ion-icon>
+        </div>
+        <div id="screen">
+            <div id="home">
+            <div id="navigator">
+                <ion-icon name="search-outline"></ion-icon>
+                <input type="text">
+            </div>
+            <div id="menu">
+                <hr>
+                <div id="apps">
+                    <div onclick="changeScreen('whatsapp')" class="app">
+                        <ion-icon name="logo-whatsapp"></ion-icon>
+                    </div>
+                    <div onclick="changeScreen('insta')" class="app">
+                        <ion-icon name="logo-instagram"></ion-icon>
+                    </div>
+                    <div class="app">
+                        <ion-icon name="skull"></ion-icon>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div id="whatsapp">
+                <div id="w_header">
+                    <p id="title">WhatsApp</p>
+                    <ion-icon name="ellipsis-vertical"></ion-icon>
+                    <ion-icon name="search-outline"></ion-icon>
+                    <div id="w_dmenu">
+                        <ion-icon name="camera"></ion-icon>
+                        <p onclick="w_menu('chats')" class="w_dmenu menu_selected" id="menu_chats">chats</p>
+                        <p onclick="w_menu('estados')" class="w_dmenu" id="menu_estados">estados</p>
+                        <p onclick="w_menu('llamadas')" class="w_dmenu" id="menu_llamadas">Llamadas</p>
+                    </div>
+                    <div class='w_screen w_scroll' id="w_chats" >
+                        <div class="chat">
+                            <img src="img/w_profile.png" alt="profile photo">
+                            <div id="chat_info">
+                                <p id="chat_fecha">1:42</p>
+                                <p id="chat_title">Alicia</p>
+                                <p id="chat_message">Buenas noches uwu</p>
+                            </div>
+                        </div>
+                        <div class="chat">
+                            <img src="img/w_profile.png" alt="profile photo">
+                            <div id="chat_info">
+                                <p id="chat_fecha">1:42</p>
+                                <p id="chat_title">Alicia</p>
+                                <p id="chat_message">Buenas noches uwu</p>
+                            </div>
+                        </div>
+                        <div class="chat">
+                            <img src="img/w_profile.png" alt="profile photo">
+                            <div id="chat_info">
+                                <p id="chat_fecha">1:42</p>
+                                <p id="chat_title">Alicia</p>
+                                <p id="chat_message">Buenas noches uwu</p>
+                            </div>
+                        </div>
+                        <div class="chat">
+                            <img src="img/w_profile.png" alt="profile photo">
+                            <div id="chat_info">
+                                <p id="chat_fecha">1:42</p>
+                                <p id="chat_title">Alicia</p>
+                                <p id="chat_message">Buenas noches uwu</p>
+                            </div>
+                        </div>
+                        <div class="chat">
+                            <img src="img/w_profile.png" alt="profile photo">
+                            <div id="chat_info">
+                                <p id="chat_fecha">1:42</p>
+                                <p id="chat_title">Alicia</p>
+                                <p id="chat_message">Buenas noches uwu</p>
+                            </div>
+                        </div>
+                        <div class="chat">
+                            <img src="img/w_profile.png" alt="profile photo">
+                            <div id="chat_info">
+                                <p id="chat_fecha">1:42</p>
+                                <p id="chat_title">Alicia</p>
+                                <p id="chat_message">Buenas noches uwu</p>
+                            </div>
+                        </div>
+                        <div class="chat">
+                            <img src="img/w_profile.png" alt="profile photo">
+                            <div id="chat_info">
+                                <p id="chat_fecha">1:42</p>
+                                <p id="chat_title">Alicia</p>
+                                <p id="chat_message">Buenas noches uwu</p>
+                            </div>
+                        </div>
+                        <div class="chat">
+                            <img src="img/w_profile.png" alt="profile photo">
+                            <div id="chat_info">
+                                <p id="chat_fecha">1:42</p>
+                                <p id="chat_title">Alicia</p>
+                                <p id="chat_message">Buenas noches uwu</p>
+                            </div>
+                        </div>
+                        <div class="chat">
+                            <img src="img/w_profile.png" alt="profile photo">
+                            <div id="chat_info">
+                                <p id="chat_fecha">1:42</p>
+                                <p id="chat_title">Alicia</p>
+                                <p id="chat_message">Buenas noches uwu</p>
+                            </div>
+                        </div>
+                        <div class="chat">
+                            <img src="img/w_profile.png" alt="profile photo">
+                            <div id="chat_info">
+                                <p id="chat_fecha">1:42</p>
+                                <p id="chat_title">Alicia</p>
+                                <p id="chat_message">Buenas noches uwu</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w_screen" id="w_estados" style="visibility: hidden;">
+                        <div id="tu_estado">
+                            <img src="img/w_profile.png" alt="profile photo">
+                            <ion-icon name="add-circle"></ion-icon>
+                            <div id="estados_info">
+                                <p id="tuestado_title">Mi estado</p>
+                                <p id="tuestado_message">Añade una actualización</p>
+                            </div>
+                        </div>
+                        <div class="w_estado">
+
+                        </div>
+                    </div>
+                    <div class="w_screen w_scroll" id="w_llamadas" style="visibility: hidden;">
+                        <div class="w_call">
+                            <img src="img/w_profile.png" alt="profile_photo">
+                            <div>
+                                <p id="wcall_title">Alicia</p>
+                                <span class="material-icons">south_west</span>
+                                <p id="wcall_time">Hoy 1:29</p>
+                            </div>
+                            <span class="material-icons">
+                                call
+                                </span>
+                        </div>
+                        <div class="w_call">
+                            <img src="img/w_profile.png" alt="profile_photo">
+                            <div>
+                                <p id="wcall_title">Alicia</p>
+                                <span style='color:green' class="material-icons">north_east</span>
+                                <p id="wcall_time">Hoy 1:29</p>
+                            </div>
+                            <span class="material-icons">call</span>
+                        </div>
+                        <div class="w_call">
+                            <img src="img/w_profile.png" alt="profile_photo">
+                            <div>
+                                <p id="wcall_title">Alicia</p>
+                                <span class="material-icons">south_west</span>
+                                <p id="wcall_time">(2) Hoy 1:29</p>
+                            </div>
+                            <span class="material-icons">videocam</span>
+                        </div>
+                        <div class="w_call">
+                            <img src="img/w_profile.png" alt="profile_photo">
+                            <div>
+                                <p id="wcall_title">Alicia</p>
+                                <span class="material-icons">south_west</span>
+                                <p id="wcall_time">Hoy 1:29</p>
+                            </div>
+                            <span class="material-icons">call</span>
+                        </div>
+                        <div class="w_call">
+                            <img src="img/w_profile.png" alt="profile_photo">
+                            <div>
+                                <p id="wcall_title">Alicia</p>
+                                <span class="material-icons">south_west</span>
+                                <p id="wcall_time">(2) Hoy 1:29</p>
+                            </div>
+                            <span class="material-icons">call</span>
+                        </div>
+                        <div class="w_call">
+                            <img src="img/w_profile.png" alt="profile_photo">
+                            <div>
+                                <p id="wcall_title">Alicia</p>
+                                <span style='color:green' class="material-icons">north_east</span>
+                                <p id="wcall_time">Hoy 1:29</p>
+                            </div>
+                            <span class="material-icons">videocam</span>
+                        </div>
+                        <div class="w_call">
+                            <img src="img/w_profile.png" alt="profile_photo">
+                            <div>
+                                <p id="wcall_title">Alicia</p>
+                                <span class="material-icons">south_west</span>
+                                <p id="wcall_time">(3) Ayer 1:29</p>
+                            </div>
+                            <span class="material-icons">call</span>
+                        </div>
+                        <div class="w_call">
+                            <img src="img/w_profile.png" alt="profile_photo">
+                            <div>
+                                <p id="wcall_title">Alicia</p>
+                                <span class="material-icons">south_west</span>
+                                <p id="wcall_time">Ayer 1:29</p>
+                            </div>
+                            <span class="material-icons">call</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="insta">
+                <div id="i_dmenu">
+                    <span onclick="i_menu('feed', this)" class="material-icons-outlined">home</span>
+                    <span onclick="i_menu('descubrir', this)" class="material-icons-outlined">search</span>
+                    <span onclick="i_menu('reels', this)" class="material-icons-outlined">movie</span>
+                    <span onclick="i_menu('shop', this)" class="material-icons-outlined">local_mall</span>
+                    <img onclick="i_menu('perfil', this)" src="img/i_profile.jfif" alt="">
+                </div>
+                <div id="i_feed">
+                    <div id="i_header">
+                        <p id="i_logo">Instagram</p>
+                        <span class="material-icons-outlined">send</span>
+                        <span class="material-icons-outlined">favorite_border</span>
+                        <span class="material-icons-outlined">add_box</span>
+                    </div>
+                <div id="i_scroll">
+                    <div id="i_stories">
+                        <div class="my_story">
+                            <img  src="img/i_profile.jfif" alt="">
+                            <p>Tu historia</p>
+                        </div>
+                        <div class="i_story">
+                            <img src="img/i_profile.jfif" alt="">
+                            <p>elmike.py</p>
+                        </div>
+                        <div class="i_story">
+                            <img src="img/i_profile.jfif" alt="">
+                            <p>elmike.py</p>
+                        </div>
+                        <div class="i_story">
+                            <img src="img/i_profile.jfif" alt="">
+                            <p>elmike.py</p>
+                        </div>
+                        <div class="i_story">
+                            <img src="img/i_profile.jfif" alt="">
+                            <p>elmike.py</p>
+                        </div>
+                        <div class="i_story">
+                            <img src="img/i_profile.jfif" alt="">
+                            <p>elmike.py</p>
+                        </div>
+                        <div class="i_story">
+                            <img src="img/i_profile.jfif" alt="">
+                            <p>elmike.py</p>
+                        </div>
+                        <div class="i_story">
+                            <img src="img/i_profile.jfif" alt="">
+                            <p>elmike.py</p>
+                        </div>
+                        <div class="i_story">
+                            <img src="img/i_profile.jfif" alt="">
+                            <p>elmike.py</p>
+                        </div>
+                        <div class="i_story">
+                            <img src="img/i_profile.jfif" alt="">
+                            <p>elmike.py</p>
+                        </div>
+                        <div class="i_story">
+                            <img src="img/i_profile.jfif" alt="">
+                            <p>elmike.py</p>
+                        </div>
+                        <div class="i_story">
+                            <img src="img/i_profile.jfif" alt="">
+                            <p>elmike.py</p>
+                        </div>
+                        <div class="i_story">
+                            <img src="img/i_profile.jfif" alt="">
+                            <p>elmike.py</p>
+                        </div>
+                    </div>
+                    <div id="i_publis">
+                        <div class="i_publi">
+                            <div class="publi_title">
+                                <img src="img/i_profile.jfif" alt="">
+                                <p>elmike.py</p>
+                                <span class="material-icons-outlined">more_vert</span>
+                            </div>
+                            <img src="img/i_publi.jpeg" alt="">
+                            <div class="publi_desc">
+                                <div class="desc_icons">
+                                    <span class="material-icons-outlined">favorite_border</span>
+                                    <span class="material-icons-outlined">maps_ugc</span>
+                                    <span class="material-icons-outlined">send</span>
+                                    <span class="material-icons-outlined">bookmark_border</span>
+                                </div>
+                                <b>543 Me gusta</b>
+                                <p><b>elmike.py</b> This is a Nissan 200SX <span>#jdm#nissan</span></p>
+                            </div>
+                        </div>
+                        <div class="i_publi">
+                            <div class="publi_title">
+                                <img src="img/i_profile.jfif" alt="">
+                                <p>elmike.py</p>
+                                <span class="material-icons-outlined">more_vert</span>
+                            </div>
+                            <img src="img/i_publi.jpeg" alt="">
+                            <div class="publi_desc">
+                                <div class="desc_icons">
+                                    <span class="material-icons-outlined">favorite_border</span>
+                                    <span class="material-icons-outlined">maps_ugc</span>
+                                    <span class="material-icons-outlined">send</span>
+                                    <span class="material-icons-outlined">bookmark_border</span>
+                                </div>
+                                <b>543 Me gusta</b>
+                                <p><b>elmike.py</b> This is a Nissan 200SX <span>#jdm#nissan</span></p>
+                            </div>
+                        </div>
+                        <div class="i_publi">
+                            <div class="publi_title">
+                                <img src="img/i_profile.jfif" alt="">
+                                <p>elmike.py</p>
+                                <span class="material-icons-outlined">more_vert</span>
+                            </div>
+                            <img src="img/i_publi.jpeg" alt="">
+                            <div class="publi_desc">
+                                <div class="desc_icons">
+                                    <span class="material-icons-outlined">favorite_border</span>
+                                    <span class="material-icons-outlined">maps_ugc</span>
+                                    <span class="material-icons-outlined">send</span>
+                                    <span class="material-icons-outlined">bookmark_border</span>
+                                </div>
+                                <b>543 Me gusta</b>
+                                <p><b>elmike.py</b> This is a Nissan 200SX <span>#jdm#nissan</span></p>
+                            </div>
+                        </div>
+                        <div class="i_publi">
+                            <div class="publi_title">
+                                <img src="img/i_profile.jfif" alt="">
+                                <p>elmike.py</p>
+                                <span class="material-icons-outlined">more_vert</span>
+                            </div>
+                            <img src="img/i_publi.jpeg" alt="">
+                            <div class="publi_desc">
+                                <div class="desc_icons">
+                                    <span class="material-icons-outlined">favorite_border</span>
+                                    <span class="material-icons-outlined">maps_ugc</span>
+                                    <span class="material-icons-outlined">send</span>
+                                    <span class="material-icons-outlined">bookmark_border</span>
+                                </div>
+                                <b>543 Me gusta</b>
+                                <p><b>elmike.py</b> This is a Nissan 200SX <span>#jdm#nissan</span></p>
+                            </div>
+                        </div>
+                        <div class="i_publi">
+                            <div class="publi_title">
+                                <img src="img/i_profile.jfif" alt="">
+                                <p>elmike.py</p>
+                                <span class="material-icons-outlined">more_vert</span>
+                            </div>
+                            <img src="img/i_publi.jpeg" alt="">
+                            <div class="publi_desc">
+                                <div class="desc_icons">
+                                    <span class="material-icons-outlined">favorite_border</span>
+                                    <span class="material-icons-outlined">maps_ugc</span>
+                                    <span class="material-icons-outlined">send</span>
+                                    <span class="material-icons-outlined">bookmark_border</span>
+                                </div>
+                                <b>543 Me gusta</b>
+                                <p><b>elmike.py</b> This is a Nissan 200SX <span>#jdm#nissan</span></p>
+                            </div>
+                        </div>
+                        <div class="i_publi">
+                            <div class="publi_title">
+                                <img src="img/i_profile.jfif" alt="">
+                                <p>elmike.py</p>
+                                <span class="material-icons-outlined">more_vert</span>
+                            </div>
+                            <img src="img/i_publi.jpeg" alt="">
+                            <div class="publi_desc">
+                                <div class="desc_icons">
+                                    <span class="material-icons-outlined">favorite_border</span>
+                                    <span class="material-icons-outlined">maps_ugc</span>
+                                    <span class="material-icons-outlined">send</span>
+                                    <span class="material-icons-outlined">bookmark_border</span>
+                                </div>
+                                <b>543 Me gusta</b>
+                                <p><b>elmike.py</b> This is a Nissan 200SX <span>#jdm#nissan</span></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                </div>
+                <div id="i_descubrir">
+                    <div id="i_dsearch">
+                        <span class="material-icons-outlined">search</span>
+                        <input type="text">
+                        <span class="material-icons-outlined">place</span>
+                    </div>
+                    <div id="i_dgrid">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img class="doble" src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img>
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img class="doble" src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img>
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <p> </p>
+                        <p> </p>
+                        <p> </p>
+                    </div>
+                    
+                </div>
+                <div id="i_reels">
+                    <div class="reel">
+                        <p>Reels</p>
+                        <span class="material-icons-outlined">photo_camera</span>
+
+                        <div class="reels_info">
+                            <img src="img/i_profile.jfif" alt="">
+                            <b>elmike.py</b>
+                            <span>Seguir</span>
+                            <p>RX7 launch</p>
+                            <marquee>
+                                <span class="material-icons-outlined">graphic_eq </span>
+                                <p>elmike.py · Audio original</p>
+                            </marquee>
+                        </div>
+                        <div class="reels_icons">
+                            <span class="material-icons-outlined">favorite_border</span>
+                            <p>70,6 mil</p>
+                            <span class="material-icons-outlined">maps_ugc</span>
+                            <p>204</p>
+                            <span class="material-icons-outlined">send</span>
+                            <span class="material-icons-outlined">more_vert</span>
+                            <img src="img/i_profile.jfif" alt="">
+                        </div>
+                    </div>
+                    <div class="reel">
+                        <p>Reels</p>
+                        <span class="material-icons-outlined">photo_camera</span>
+
+                        <div class="reels_info">
+                            <img src="img/i_profile.jfif" alt="">
+                            <b>elmike.py</b>
+                            <span>Seguir</span>
+                            <p>RX7 launch</p>
+                            <marquee>
+                                <span class="material-icons-outlined">graphic_eq </span>
+                                <p>elmike.py · Audio original</p>
+                            </marquee>
+                        </div>
+                        <div class="reels_icons">
+                            <span class="material-icons-outlined">favorite_border</span>
+                            <p>70,6 mil</p>
+                            <span class="material-icons-outlined">maps_ugc</span>
+                            <p>204</p>
+                            <span class="material-icons-outlined">send</span>
+                            <span class="material-icons-outlined">more_vert</span>
+                            <img src="img/i_profile.jfif" alt="">
+                        </div>
+                    </div>
+                    <div class="reel">
+                        <p>Reels</p>
+                        <span class="material-icons-outlined">photo_camera</span>
+
+                        <div class="reels_info">
+                            <img src="img/i_profile.jfif" alt="">
+                            <b>elmike.py</b>
+                            <span>Seguir</span>
+                            <p>RX7 launch</p>
+                            <marquee>
+                                <span class="material-icons-outlined">graphic_eq </span>
+                                <p>elmike.py · Audio original</p>
+                            </marquee>
+                        </div>
+                        <div class="reels_icons">
+                            <span class="material-icons-outlined">favorite_border</span>
+                            <p>70,6 mil</p>
+                            <span class="material-icons-outlined">maps_ugc</span>
+                            <p>204</p>
+                            <span class="material-icons-outlined">send</span>
+                            <span class="material-icons-outlined">more_vert</span>
+                            <img src="img/i_profile.jfif" alt="">
+                        </div>
+                    </div>
+                    <div class="reel">
+                        <p>Reels</p>
+                        <span class="material-icons-outlined">photo_camera</span>
+
+                        <div class="reels_info">
+                            <img src="img/i_profile.jfif" alt="">
+                            <b>elmike.py</b>
+                            <span>Seguir</span>
+                            <p>RX7 launch</p>
+                            <marquee>
+                                <span class="material-icons-outlined">graphic_eq </span>
+                                <p>elmike.py · Audio original</p>
+                            </marquee>
+                        </div>
+                        <div class="reels_icons">
+                            <span class="material-icons-outlined">favorite_border</span>
+                            <p>70,6 mil</p>
+                            <span class="material-icons-outlined">maps_ugc</span>
+                            <p>204</p>
+                            <span class="material-icons-outlined">send</span>
+                            <span class="material-icons-outlined">more_vert</span>
+                            <img src="img/i_profile.jfif" alt="">
+                        </div>
+                    </div>
+                    <div class="reel">
+                        <p>Reels</p>
+                        <span class="material-icons-outlined">photo_camera</span>
+
+                        <div class="reels_info">
+                            <img src="img/i_profile.jfif" alt="">
+                            <b>elmike.py</b>
+                            <span>Seguir</span>
+                            <p>RX7 launch</p>
+                            <marquee>
+                                <span class="material-icons-outlined">graphic_eq </span>
+                                <p>elmike.py · Audio original</p>
+                            </marquee>
+                        </div>
+                        <div class="reels_icons">
+                            <span class="material-icons-outlined">favorite_border</span>
+                            <p>70,6 mil</p>
+                            <span class="material-icons-outlined">maps_ugc</span>
+                            <p>204</p>
+                            <span class="material-icons-outlined">send</span>
+                            <span class="material-icons-outlined">more_vert</span>
+                            <img src="img/i_profile.jfif" alt="">
+                        </div>
+                    </div>
+                    <div class="reel">
+                        <p>Reels</p>
+                        <span class="material-icons-outlined">photo_camera</span>
+
+                        <div class="reels_info">
+                            <img src="img/i_profile.jfif" alt="">
+                            <b>elmike.py</b>
+                            <span>Seguir</span>
+                            <p>RX7 launch</p>
+                            <marquee>
+                                <span class="material-icons-outlined">graphic_eq </span>
+                                <p>elmike.py · Audio original</p>
+                            </marquee>
+                        </div>
+                        <div class="reels_icons">
+                            <span class="material-icons-outlined">favorite_border</span>
+                            <p>70,6 mil</p>
+                            <span class="material-icons-outlined">maps_ugc</span>
+                            <p>204</p>
+                            <span class="material-icons-outlined">send</span>
+                            <span class="material-icons-outlined">more_vert</span>
+                            <img src="img/i_profile.jfif" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div id="i_shop">
+                    <div id="shop_header">
+                        <p>Tienda</p>
+                        <span class="material-icons-outlined">bookmarks</span>
+                        <span class="material-icons-outlined">menu</span>
+                        
+                        <br>
+                        <span class="material-icons-outlined">search</span>
+                        <input type="text">
+                        <div id="shop_slider">
+                            <p>Tiendas</p>
+                            <p>Vídeos</p>
+                            <p>Sugerencias de editores</p>
+                            <p>Colecciones</p>
+                            <p>Guías</p>
+                        </div>
+                    </div>
+                    <div id="shop_items">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                        <img src="img/i_publi.jpeg" alt="">
+                    </div>
+                </div>
+                <div id="i_perfil">
+                    <div id="perfil_header">
+                        <span class="material-icons-outlined">lock</span>
+                        <p>elmike.py</p>
+                        <span class="material-icons-outlined">expand_more</span>
+
+                        
+                        <span class="material-icons-outlined">add_box</span>
+                        <span class="material-icons-outlined">menu</span>
+                    </div>
+                    <div id="perfil_info">
+                        <img src="img/i_profile.jfif" alt="">
+                        <div id="stats">
+                            <div class="stat"><p>0</p><p>Publicacio...</p></div>
+                            <div class="stat"><p>1300</p><p>Seguidores</p></div>
+                            <div class="stat"><p>998</p><p>Seguiendo</p></div>
+                        </div>
+                    </div>
+                    <div id="edit_perf">
+                        <span>Editar perfil</span>
+                        <span class="material-icons-outlined">expand_more</span>
+                    </div>
+                    <div id="perfil_story">
+                        <span class="material-icons-outlined">add</span>
+                        <p>Nuevo</p>
+                    </div>
+                    <div id="perfil_feed_choose">
+                        <span class="material-icons-outlined">grid_on</span>
+                        <span class="material-icons-outlined">assignment_ind</span>
+
+                    </div>
+                    <div id="perfil_slider">
+
+                    </div>
+                    <div id="perfil_slider_etiq">
+                        
+                    </div>
+                </div>
+            </div>
+            <div id="myapp"></div>
+        </div>
+        <!----->
+        <script>
+            function loaded(){
+                changeScreen('insta')
+                startTime()
+            }
+            var visibleNow=null;
+
+            function changeScreen(s){
+                if(visibleNow!=null){
+                    visibleNow.style.visibility='hidden'
+                }
+                if(s!='home'){
+                    apphome(s)
+                }
+                document.getElementById('whatsapp').style.visibility='hidden'
+                document.getElementById('insta').style.visibility='hidden'
+                document.getElementById('myapp').style.visibility='hidden'
+                document.getElementById('home').style.visibility='hidden'
+                document.getElementById(s).style.visibility='visible'
+            }
+            function apphome(a){
+                if(a.charAt(0)=='w'){
+                    w_menu('chats')
+                }else if(a.charAt(0)=='i'){
+                    i_menu('perfil', document.getElementById('i_dmenu').children[0])
+                }else if(a.charAt(0)=='m'){
+                    return document.getElementById('m_chats')
+                }
+
+            }
+            function notif(){
+                document.getElementById("noti").classList.toggle("bignotif");
+
+            }
+
+            function w_menu(s){
+                document.getElementById('w_chats').style.visibility='hidden'
+                document.getElementById('w_estados').style.visibility='hidden'
+                document.getElementById('w_llamadas').style.visibility='hidden'
+                document.getElementById('menu_chats').classList.remove('menu_selected');
+                document.getElementById('menu_estados').classList.remove('menu_selected');
+                document.getElementById('menu_llamadas').classList.remove('menu_selected');
+                document.getElementById('menu_'+s).classList.add('menu_selected');
+                document.getElementById('w_'+s).style.visibility='visible'
+                visibleNow=document.getElementById('w_'+s)
+                console.log(visibleNow.style.visibility)
+            }
+
+            function i_menu(s, select){
+                document.getElementById('i_feed').style.visibility='hidden'
+                document.getElementById('i_descubrir').style.visibility='hidden'
+                document.getElementById('i_reels').style.visibility='hidden'
+                document.getElementById('i_shop').style.visibility='hidden'
+                document.getElementById('i_perfil').style.visibility='hidden'
+                i_menu_sel(select)
+                document.getElementById('i_'+s).style.visibility='visible'
+                visibleNow=document.getElementById('i_'+s)
+
+            }
+            function i_menu_sel(s){
+                const menu = document.getElementById('i_dmenu');
+                for (let i = 0; i < menu.children.length; i++) {
+                  menu.children[i].className='material-icons-outlined'
+                }
+                s.className='material-icons'
+            }
+
+            function startTime() {
+            var today = new Date();
+            var hr = today.getHours();
+            var min = today.getMinutes();
+            //var sec = today.getSeconds();
+            //Add a zero in front of numbers<10
+            min = checkTime(min);
+            hr = checkTime(hr);
+            //sec = checkTime(sec);
+            document.getElementById("clock").innerHTML = hr + " : " + min;
+            var time = setTimeout(function(){ startTime() }, 1000);
+        }
+        function checkTime(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+        </script>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <i id='ultimo'></i>
+    </body>
+</html>

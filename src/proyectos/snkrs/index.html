@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Shop</title>
+        <style>
+            /*
+            #7579E7
+            #9AB3F5
+            #A3D8F4
+            #B9FFFC
+            */
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                background: #7579e7;
+            }
+            .container{
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: rgb(117,121,231);
+                background: linear-gradient(144deg, #7579e7 0%, #9ab3f5 50%, #a3d8f4 100%);
+            }
+            .products{
+                text-align: center;
+                width: 25vh;
+                height: 25vh;
+                padding: 5px;
+                font-family: fantasy;
+                letter-spacing: 5px;
+                color: #fff;
+                border-radius: 50%;
+                /*box-shadow: 0 0 20px 2px rgba(228, 220, 255, 0.212);*/
+            }
+            .crystal{
+                
+                width: 25vh;
+                height: 25vh;
+                /*padding: 2vh;*/
+                background-color: rgba(228, 220, 255, 0.103);
+                border-radius: 30px;
+                color: transparent;
+            }
+            .crystal button {
+              background-color: transparent;
+              border: none;
+              color: #7579e7;
+              font-family: fantasy;
+              text-align: center;
+              text-decoration: none;
+              font-size: 16px;
+              margin: 4px 2px;
+              padding: 5px 15px;
+              transition-duration: 0.2s;
+              cursor: pointer;
+            }
+            .crystal:hover{
+                animation-name: crystal;
+                animation-duration: 1s;
+                animation-name: pdesc;
+                animation-duration: 1s;
+                color: white;
+                background-color: rgba(228, 220, 255, 0.397);
+                box-shadow: 0 0 20px 2px rgba(228, 220, 255, 0.397);
+            }
+            @keyframes crystal{
+                0%{background-color: rgba(228, 220, 255, 0.103);
+                    box-shadow: 0 0 20px 2px rgba(228, 220, 255, 0.0);}
+                100%{background-color: rgba(228, 220, 255, 0.397);
+                    box-shadow: 0 0 20px 2px rgba(228, 220, 255, 0.397);}
+            }
+            @keyframes pdesc{
+                0%{color: transparent;}
+                100%{color: white;}
+            }
+            .snkrs{
+                width: 11vh;
+                height: 11h;
+            }
+            .pdescr{
+                margin-top: 20px;
+                padding: 10px;
+                text-align: left;
+                font-size: 15px;
+                letter-spacing: 1px;
+               
+            }
+            .ptitle{
+                font-size: larger;
+                color: white;
+            }
+
+            .tallas {
+            	padding: 4px;
+            	position: relative;
+            }
+
+            .tallas input {
+            	width: auto;
+            	height: 100%;
+            	appearance: none;
+            	outline: none;
+            	cursor: pointer;
+            	border-radius: 7px;
+            	padding: 4px 8px;
+            	color: #7579e7;
+                font-family: fantasy;
+            	font-size: 14px;
+            }
+
+            .tallas input:hover{
+                color: #fff;
+                text-shadow: 0 0 10px #7579e7;
+            }
+
+            .tallas input:checked {
+            	background-color: #7579e7;
+            	color: #9ab3f5;
+            }
+
+            .tallas input:before {
+            	content: attr(label);
+            	display: inline-block;
+            	text-align: center;
+            	width: 100%;
+            }
+            .crystal .buy {
+                border-radius: 50px;
+                background-color: transparent;
+                border: 2px solid #7579e7;
+            }
+
+            .crystal .buy:hover {
+              box-shadow: 0 0 20px#7579e7;
+              color: white;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class='products' id="p1">
+                <img class='snkrs' src='img/snkrs1.png'>
+                <div class='crystal'>
+                    <br><p class='ptitle'>SNKRS 1</p>
+                    <p class='pdescr'>Breve descripción del producto, comentando los materiales y otros detalles importantes</p>
+                    <div class="tallas">
+                        <input label="45" type="radio" id="male" name="gender" value="male">
+                        <input label="46" type="radio" id="female" name="gender" value="female">
+                        <input label="47" type="radio" id="other" name="gender" value="other">
+                    </div>
+                    <button class="buy">Add to cart</button>
+                </div>
+            </div>
+            <div class='products' id="p1">
+                <img class='snkrs' src='img/snkrs2.png'>
+                <div class='crystal'>
+                    <br><p class='ptitle'>SNKRS 2</p>
+                    <p class='pdescr'>Breve descripción del producto, comentando los materiales y otros detalles importantes</p>
+                    <div class="tallas">
+                        <input label="45" type="radio" id="male" name="gender" value="male">
+                        <input label="46" type="radio" id="female" name="gender" value="female">
+                        <input label="47" type="radio" id="other" name="gender" value="other">
+                    </div>
+                    <button class="buy">Add to cart</button>
+                </div>
+            </div>
+            <div class='products' id="p1">
+                <img class='snkrs' src='img/snkrs3.png'>
+                <div class='crystal'>
+                    <br><p class='ptitle'>SNKRS 3</p>
+                    <p class='pdescr'>Breve descripción del producto, comentando los materiales y otros detalles importantes</p>
+                    <div class="tallas">
+                        <input label="45" type="radio" id="male" name="gender" value="male">
+                        <input label="46" type="radio" id="female" name="gender" value="female">
+                        <input label="47" type="radio" id="other" name="gender" value="other">
+                    </div>
+                    <button class="buy">Add to cart</button>
+                </div>
+            </div>
+        </div>
+        <script>
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body{background-color: black;}
+
+            div.bdy{
+                width: 100%;
+                height: 70vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            #neon{
+                font-size: 800%;
+                font-family: monospace;
+                letter-spacing: 10px;
+                animation-name: a404 ;
+                animation-duration: 20s;
+                animation-iteration-count: infinite;
+            }
+            @keyframes a404{
+                0%{
+                    color: #000;   
+                }
+                1%{
+                    text-shadow: 0 0 0px #70F;
+                }
+                5%{
+                    color: #70F;
+                }
+                10%{
+                    text-shadow: 0 0 50px #70F;
+                    color: #70F;
+                }
+                12%{
+                    text-shadow: 0 0 50px #70F;
+                    color: #70F;
+                }
+                12.4%{
+                    text-shadow: 0 0 50px #000000;
+                    color: #000000;
+                }
+                12.8%{
+                    text-shadow: 0 0 50px #70F;
+                    color: #70F;
+                }
+                13.2%{
+                    text-shadow: 0 0 50px #000000;
+                    color: #000000;
+                }
+                15%{
+                    text-shadow: 0 0 50px #70F;
+                    color: #70F;
+                }
+                20%{
+                    text-shadow: 0 0 50px #70F;
+                    color: #70F;
+                }
+                45%{
+                    text-shadow: 0 0 50px #70F;
+                    color: #70F;
+                }
+                50%{
+                    text-shadow: 0 0 20px #39007a;
+                    color: #39007a;
+                }
+                70%{
+                    text-shadow: 0 0 50px #70F;
+                    color: #70F;
+                }
+                95%{
+                    text-shadow: 0 0 50px #70F;
+                    color: #70F;
+                }
+                98%{
+                    text-shadow: 0 0 50px #39007a;
+                    color: #39007a;
+                }
+            }
+
+            #zero{
+                animation-name: a404_2;
+                animation-duration: 20s;
+                animation-iteration-count: infinite;
+            }
+            @keyframes a404_2{
+                0%{
+                    color: #000;   
+                }
+                1%{
+                    text-shadow: 0 0 0px #70F;
+                }
+                5%{
+                    color: #70F;
+                }
+                10%{
+                    text-shadow: 0 0 50px #70F;
+                    color: #70F;
+                }
+                10.4%{
+                    text-shadow: 0 0 50px #000000;
+                    color: #000000;
+                }
+                10.8%{
+                    text-shadow: 0 0 50px #70F;
+                    color: #70F;
+                }
+                12%{
+                    text-shadow: 0 0 50px #70F;
+                    color: #70F;
+                }
+                12.4%{
+                    text-shadow: 0 0 50px #000000;
+                    color: #000000;
+                }
+                12.8%{
+                    text-shadow: 0 0 50px #70F;
+                    color: #70F;
+                }
+                13.2%{
+                    text-shadow: 0 0 50px #000000;
+                    color: #000000;
+                }
+                15%{
+                    text-shadow: 0 0 50px #70F;
+                    color: #70F;
+                }
+                20%{
+                    text-shadow: 0 0 50px #70F;
+                    color: #70F;
+                }
+                25%{
+                    text-shadow: 0 0 50px #70F;
+                    color: #70F;
+                }
+                32.4%{
+                    text-shadow: 0 0 50px #000000;
+                    color: #000000;
+                }
+                32.8%{
+                    text-shadow: 0 0 50px #70F;
+                    color: #70F;
+                }
+                33.4%{
+                    text-shadow: 0 0 50px #000000;
+                    color: #000000;
+                }
+                40%{
+                    text-shadow: 0 0 50px #70F;
+                    color: #70F;
+                }
+                45%{
+                    text-shadow: 0 0 50px #70F;
+                    color: #70F;
+                }
+                50%{
+                    text-shadow: 0 0 20px #39007a;
+                    color: #39007a;
+                }
+                70%{
+                    text-shadow: 0 0 50px #70F;
+                    color: #70F;
+                }
+                77.4%{
+                    text-shadow: 0 0 50px #000000;
+                    color: #000000;
+                }
+                77.8%{
+                    text-shadow: 0 0 50px #70F;
+                    color: #70F;
+                }
+                78.4%{
+                    text-shadow: 0 0 50px #000000;
+                    color: #000000;
+                }
+                80%{
+                    text-shadow: 0 0 50px #70F;
+                    color: #70F;
+                }
+                95%{
+                    text-shadow: 0 0 50px #70F;
+                    color: #70F;
+                }
+                98%{
+                    text-shadow: 0 0 50px #39007a;
+                    color: #39007a;
+                }
+            }
+            
+            .txt{
+                margin-top: 5%;
+                font-style: bold;
+                text-align: center;
+                font-size: 100%;
+                font-family: monospace;
+                letter-spacing: 1px;
+                color: #70F;
+
+            }
+
+            #butt{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            #butt a {
+                display: inline-block;
+                text-decoration: none;
+                text-align: center;
+                margin-top: 100%;
+                padding: 5%;
+                color: #5c00c5;
+                text-shadow: 0 0 10px#70F;
+                font-weight: 900;
+                text-align: center;
+                font-size: 150%;
+                font-family: monospace;
+                letter-spacing: 1px;
+                border-radius: 10px;
+                border: 4px solid #70F;
+                box-shadow:inset 0 0 20px #70F,  0 0 20px #70F;
+            }
+
+            #butt a:hover {
+                color: #111;
+                background: #70F;
+                box-shadow: 0 0 50px #70F;
+            }
+            span#luzoff::before{
+                content: "";
+                position: absolute;
+                background: rgba(119, 0, 255, 0.274);
+                top: 12%;
+                left: 0;
+                width: 100%;
+                height: 100%;
+
+                transform: perspective(20em) rotateX(40deg) scale(0.3, 0.15);
+                animation: luzoff 0.5s;
+                filter: blur(30vh);
+            }
+            @keyframes luzoff{
+                0%{filter: blur(50vh);}
+                100%{filter: blur(30vh);}
+            }
+            span#luzon::before{
+                content: "";
+                position: absolute;
+                background: rgba(119, 0, 255, 0.459);
+                top: 12%;
+                left: 0;
+                width: 100%;
+                height: 100%;
+
+                transform: perspective(20em) rotateX(40deg) scale(0.3, 0.15);
+                animation: luzon 0.5s;
+                filter: blur(50vh);
+            }
+            @keyframes luzon{
+                0%{filter: blur(30vh);}
+                100%{filter: blur(50vh);}
+            }
+           
+        </style>
+    </head>
+    <body>
+    <div class="bdy">
+        <div class="d404">
+            <p id="neon">4<span id="zero">0</span>4</p>
+            <p class="txt">Opps, Page Not Found</p>
+            <div id="butt">
+                <a href="index.html" onmouseover="button()" onmouseout="buttoff()">Back To Home</a>
+                <span id="luzoff"></span>
+            </div>
+        </div>        
+    </div>
+        
+        <script>
+            function button(){
+                document.getElementById('luzoff').id = 'luzon'; 
+            }
+            function buttoff(){
+                document.getElementById('luzon').id = 'luzoff'; 
+            }
+        </script>
+    </body>
+</html>

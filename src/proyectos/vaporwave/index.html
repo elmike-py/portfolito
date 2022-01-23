@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+           @import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Megrim&family=Press+Start+2P&family=VT323&display=swap');
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            #load{
+              position: absolute;
+              width: 100%;
+              height: 210vh;
+              background-color: #101022;
+              z-index: 10000;
+            }
+            .loading{
+            position:absolute;
+            top:50vh;
+            left: 50%;
+            transform:translate(-50%,-50%);
+            width:150px;
+            height:150px;
+            background:transparent;
+            border:3px solid #3c3c3c;
+            border-radius:50%;
+            text-align:center;
+            line-height:150px;
+            font-family:sans-serif;
+            font-size:20px;
+            color:#cc00ff;
+            letter-spacing:4px;
+            text-transform:uppercase;
+            text-shadow:0 0 20px #cc00ff;
+            box-shadow:0 0 20px rgba(0,0,0,.5);
+            }
+            .loading::before{
+            content:'';
+            position:absolute;
+            top:-3px;
+            left:-3px;
+            width:100%;
+            height:100%;
+            border:3px solid transparent;
+            border-top:3px solid #cc00ff;
+            border-right:3px solid #cc00ff;
+            border-radius:50%;
+            animation:animateC 2s linear infinite;
+          }
+          .loading::after{
+            content:'';
+            position:absolute;
+            top:-3px;
+            left:-3px;
+            width:100%;
+            height:100%;
+            border:3px solid transparent;
+            border-top:10px solid #cc00ff;
+            border-right:10px solid #cc00ff;
+            border-radius:50%;
+            filter: blur(30px);
+            animation:animateC 2s linear infinite;
+          }
+          .loading span{
+            display:block;
+            position:absolute;
+            top:calc(50% - 2px);
+            left:50%;
+            width:50%;
+            height:4px;
+            background:transparent;
+            transform-origin:left;
+            animation:animate 2s linear infinite;
+          }
+            /*.loading span:before
+{
+  content:'';
+  position:absolute;
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  background:#fff000;
+  top:-6px;
+  right:-8px;
+  box-shadow:0 0 20px #fff000;
+}*/
+            @keyframes animateC{
+              0%{transform:rotate(0deg);}
+              100%{transform:rotate(360deg);}
+            }
+            @keyframes animate{
+              0%{transform:rotate(45deg);}
+              100%{transform:rotate(405deg);}
+            }
+            /*.loading{
+                position: absolute;
+                width: 100%;
+                height: 210vh;
+                background-color: #101022;
+                z-index: 10000;
+                display: flex;
+                justify-content: center;
+            }
+            */
+            body::-webkit-scrollbar {
+              width: 12px;               /* width of the entire scrollbar */
+            }
+
+            body::-webkit-scrollbar-track {
+              background: #101022 ;        /* color of the tracking area */
+            }
+
+            body::-webkit-scrollbar-thumb {
+              background-color: #94247c;    /* color of the scroll thumb */
+              border-radius: 30px;       /* roundness of the scroll thumb */
+              border: 3px solid #101022;  /* creates padding around scroll thumb */
+            }
+            body::-webkit-scrollbar-thumb:hover {
+              background-color: #b033c9;
+            }
+            body{
+                background-color: #101022;
+                overflow-x: hidden;
+            }
+            #portada{
+                width: 100%;
+                height: 100vh;
+                background-color: #101022;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            #sun{
+                background-image: url(img/vwsun2.png);
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+                width: 60vh;
+                height: 60vh;
+            }
+            #title{
+                position: absolute;
+                left: 160vh;
+                top: 50vh;
+                font-size: 15vh;
+                font-family: 'Megrim', cursive;
+                letter-spacing: 20px;
+                color: #2d2d5f;
+            }
+            #mountains{
+                position: absolute;
+                top: 24vh;
+                background-image: url(img/mountainsf.png);
+                background-size: 100% 160%;
+                width: 100%;
+                height: 60vh;
+            }
+            #mesh{
+                position: absolute;
+                top: 76vh;
+                background-image: url(img/mesh.png);
+                background-repeat:  repeat;
+                width: 100%;
+                height: 23vh;
+                transform: perspective(5em) rotateX(40deg) scale(3.5, 1);
+            }
+            #content{
+                position: absolute;
+                top: 100vh;
+                width: 100%;
+                height: 100vh;
+                background-color: #101022;
+                box-shadow: 0px -10px 12px 13px #101022;
+                font-family: 'Audiowide', cursive;
+                color: #bfd2f7;
+                padding: 20px;
+            }
+            #content h1{
+                margin-top: 10vh;
+                text-align: center;
+                font-size: 10vh;
+            }
+            #content p{
+                padding: 10px;
+                padding-right: 20px;
+            }
+            #paragraphs{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body onload="loaded()">
+        <div id="load"><div class="loading"><p>Loading</p><span></span></div></div>
+        <div id="portada">
+            <div id="sun"></div>
+            <div id="title"><p id="tit">Vaporwave</p></div>
+            <div id="mountains"></div>
+            <div id="mesh"></div>
+        </div>
+        <div id="content">
+            <h1>VAPORWAVE</h1>
+            <div id="paragraphs">
+                <div id="ph1">
+                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                </div>
+                <div id="ph2">
+                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+          window.addEventListener("scroll", function() {
+          let pageY = window.pageYOffset;
+          let mesh = document.getElementById('mesh');
+          let sun = document.getElementById('sun');
+          let title = document.getElementById('title');
+          mesh.style.backgroundPosition = `0px ${pageY * 0.08}px`
+          sun.style.backgroundPosition = `0px ${pageY * 0.2}px`
+          title.style.left = (pageY * -0.3)+ 160 +'vh'
+          })
+
+          function loaded () {
+          var x = document.body;
+          var y = document.getElementById ( "load");
+          x.removeChild (y);
+        } 
+          
+        </script>
+    </body>
+</html>
