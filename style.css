@@ -199,7 +199,7 @@ nav #enlaces a{
     opacity: 1;
 }
 
-
+ 
 
 /*----Footer----*/
 footer{
@@ -229,3 +229,97 @@ footer h1{
 #footer-contact a p{
     margin-left: 0.5em;
 }
+
+
+
+/*-------RESPONSIVE------*/
+@media screen and (max-width: 800px) {
+    /*---Barra de navegación---*/
+    nav{
+        justify-content: center;
+    }
+    nav #enlaces{
+        margin: 0;
+    }
+    /*---Página de inicio---*/
+    #inicio{
+        flex-flow: column;
+        text-align: center;
+    }
+    #inicio img{
+        margin-top: 10vh;
+        width: 70%;
+        padding: 0;
+    }
+    #inicio #presentacion{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column;
+    }
+    #inicio #presentacion p{
+        margin: 0;
+        text-align: center;
+        width: 100%;
+        margin-bottom: 10vh;
+    }
+    /*---Página About Me---*/
+
+    .about-page .img-container {
+        width: 30%;
+    }
+    .about-page .img-container img{
+        width: 90%;
+        margin: 0;
+    }
+    .about-page .about-info{
+        width: 70%;
+        padding: 0.3em;
+    }
+    .about-page .about-info h2{
+        font-size: large;
+    }
+    .about-page .about-info p{
+        font-size: small;
+    }
+
+
+    .about-page:nth-child(2n) .img-container img{
+        margin: 0;
+    }
+
+
+    /*---Página Proyectos---*/
+    #proyectos{
+        width: 90%;
+        margin-left: 5%;
+    }
+    #proyectos-grid {
+        grid-template-columns: 30% 30% 30%;
+        column-gap: calc(10% / 2);
+    }
+    .proyecto h3{
+        text-align: center;
+        font-size: 100%;
+    }
+    .proyecto img{
+        margin-bottom: 1em;
+    }
+
+
+
+
+    /*---Footer---*/
+    footer{
+        height: 22vh;
+    }
+    footer h1{
+        margin: 1em 0em 1em 1em;
+    }
+    footer #footer-contact a{
+        margin: 1em;
+    }
+
+  } 
