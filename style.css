@@ -236,7 +236,7 @@ footer h1{
 @media screen and (max-width: 800px) {
     /*---Barra de navegación---*/
     nav{
-        justify-content: center;
+        justify-content: start;
     }
     nav #enlaces{
         margin: 0;
