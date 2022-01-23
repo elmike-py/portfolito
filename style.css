@@ -183,22 +183,18 @@ nav #enlaces a{
 }
 .hoverimg{
     position: absolute;
-    top: 8.5vh;
-    width: 90%;
-    height: 50%;
+    bottom: 8vh;
     border-radius: 10px;
-    background-color: #00000083;
     opacity: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     transition: 0.3s;
 
 }
 .proyecto:hover .hoverimg{
     opacity: 1;
 }
-
+.proyecto:hover img{
+    opacity: 0.5;
+}
  
 
 /*----Footer----*/
